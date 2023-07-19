@@ -12,11 +12,16 @@ function HomeContainer({
   categories = [],
   selectedCategory,
 }) {
+  // console.log(selectedCategory.movies[0]);
   return (
     <div>
-      <FeaturedMovie movie={topRatedMovies?.[0]} />
-      <Categories categories={categories.slice(0, 5)} />
-      {selectedCategory.movies.length > 0 && (
+      {topRatedMovies.length > 0 ? (
+        <FeaturedMovie movie={topRatedMovies?.[0]} />
+      ) : (
+        <FeaturedMovie movie={selectedCategory.movies[0]} />
+      )}
+      <Categories categories={categories} />
+      {selectedCategory?.movies?.length > 0 && (
         <MoviesSection
           title={
             categories?.find(
@@ -26,22 +31,30 @@ function HomeContainer({
           movies={selectedCategory.movies}
         />
       )}
-      <MoviesSection
-        title="Upcoming Movies"
-        movies={upcomingMovies.slice(1, 13)}
-      />
-      <MoviesSection
-        title="Movies in Theaters"
-        movies={moviesInTheaters.slice(1, 19)}
-      />
-      <MoviesSection
-        title="Popular Movies"
-        movies={popularMovies.slice(1, 13)}
-      />
-      <MoviesSection
-        title="Top Rated Movies"
-        movies={topRatedMovies.slice(1, 7)}
-      />
+      {upcomingMovies.length > 0 && (
+        <MoviesSection
+          title="Upcoming Movies"
+          movies={upcomingMovies.slice(0, 12)}
+        />
+      )}
+      {moviesInTheaters.length > 0 && (
+        <MoviesSection
+          title="Movies in Theaters"
+          movies={moviesInTheaters.slice(0, 18)}
+        />
+      )}
+      {popularMovies.length > 0 && (
+        <MoviesSection
+          title="Popular Movies"
+          movies={popularMovies.slice(0, 12)}
+        />
+      )}
+      {topRatedMovies.length > 0 && (
+        <MoviesSection
+          title="Top Rated Movies"
+          movies={topRatedMovies.slice(0, 6)}
+        />
+      )}
     </div>
   );
 }

@@ -5,10 +5,10 @@ import styles from "./styles.module.css";
 function CategoriesLoading() {
   return (
     <div className={styles.categories}>
-      {Array(5)
+      {Array(20)
         .fill(null)
         .map((_, index) => (
-          <Skeleton key={index} height={72} />
+          <Skeleton key={index} height={100} />
         ))}
     </div>
   );

@@ -14,7 +14,7 @@ function MoviesSection({ title, movies }) {
             className={styles.movie}
             key={movie.id}
           >
-            <Link href={`/movie/${movie.id}`}>
+            <Link href={`/movies/${movie.id}`}>
               <Image
                 fill
                 unoptimized
