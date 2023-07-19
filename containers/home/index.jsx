@@ -7,6 +7,8 @@ import { MoviesSection } from "@/components/movies-section";
 function HomeContainer({
   topRatedMovies = [],
   popularMovies = [],
+  upcomingMovies = [],
+  moviesInTheaters = [],
   categories = [],
   selectedCategory,
 }) {
@@ -25,12 +27,20 @@ function HomeContainer({
         />
       )}
       <MoviesSection
-        title="Top Rated Movies"
-        movies={topRatedMovies.slice(1, 7)}
+        title="Upcoming Movies"
+        movies={upcomingMovies.slice(1, 13)}
+      />
+      <MoviesSection
+        title="Movies in Theaters"
+        movies={moviesInTheaters.slice(1, 19)}
       />
       <MoviesSection
         title="Popular Movies"
-        movies={popularMovies.slice(7, 13)}
+        movies={popularMovies.slice(1, 13)}
+      />
+      <MoviesSection
+        title="Top Rated Movies"
+        movies={topRatedMovies.slice(1, 7)}
       />
     </div>
   );

@@ -19,6 +19,14 @@ const getPopularMovies = async () => {
   return fetchMovieApi("/movie/popular", "&page=1");
 };
 
+const getUpcomingMovies = async () => {
+  return fetchMovieApi(`/movie/upcoming`, "&page=1");
+};
+
+const getMoviesinTheaters = async () => {
+  return fetchMovieApi(`/movie/now_playing`, "&page=1");
+};
+
 const getCategories = async () => {
   return fetchMovieApi("/genre/movie/list", "&page=1");
 };
@@ -35,6 +43,8 @@ export {
   fetchMovieApi,
   getTopRatedMovies,
   getPopularMovies,
+  getUpcomingMovies,
+  getMoviesinTheaters,
   getCategories,
   getSingleCategory,
   getMovie,
