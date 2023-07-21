@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
 
 function FeaturedMovie({ movie = {}, isCompact = true }) {
-  const { poster_path, title, overview } = movie;
+  const { title, overview, backdrop_path } = movie;
 
   return (
     <div className={styles.movieWrapper}>
@@ -32,7 +32,7 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
           fill
         />

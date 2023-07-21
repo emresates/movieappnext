@@ -10,11 +10,14 @@ function MoviesSection({ title, movies }) {
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.movies}>
         {movies.map((movie) => (
-          <div
-            className={styles.movie}
-            key={movie.id}
-          >
-            <Link href={`/movies/${movie.id}`}>
+          <div className={styles.movie} key={movie.id}>
+            <Link
+              href={`${
+                title.toLowerCase().includes("series")
+                  ? `/series/${movie.id}`
+                  : `/movies/${movie.id}`
+              }`}
+            >
               <Image
                 fill
                 unoptimized
