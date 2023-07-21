@@ -8,12 +8,12 @@ async function Categories({ params }) {
 
   const categoryPromise = getCategories();
   const [{ genres: categories }] = await Promise.all([categoryPromise]);
-  
+
   const results = await getSingleCategory(params.id);
 
-//   console.log(params);
-//   console.log(categories);
-//   console.log(results);
+  //   console.log(params);
+  //   console.log(categories);
+  //   console.log(results);
   return (
     <HomeContainer
       categories={categories}

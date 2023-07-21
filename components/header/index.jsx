@@ -16,8 +16,8 @@ function Header() {
         <nav className={styles.navigationMenu}>
           <Link href="/movies">Movies</Link>
           <Link href="/series">Series</Link>
-          <Link href="/categories">Categories</Link>
           <Link href="/">Sign In</Link>
+          <Link href="/">Sing Up</Link>
         </nav>
       </div>
     </header>
