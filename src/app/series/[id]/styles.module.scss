@@ -1,0 +1,18 @@
+.movieWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: -1;
+
+  .moviePoster {
+    position: relative;
+    width: 200px;
+    img {
+      height: auto !important;
+      z-index: -2;
+      max-height: 100vh;
+      object-fit: cover;
+    }
+  }
+}
