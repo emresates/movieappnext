@@ -5,10 +5,11 @@ import { Categories } from "@/components/categories";
 import { MoviesSection } from "@/components/movies-section";
 import { FeaturedSerie } from "@/components/featured-serie";
 
-// topRatedSeries={topRatedSeries}
-// popularSeries={popularSeries}
-// seriesAiringToday={seriesAiringToday}
-// seriesOntheAir={seriesOntheAir}
+function getRandomInteger(min, max) {
+  const number = Math.floor(Math.random() * (max - min + 1)) + min;
+  console.log("number", number);
+  return number;
+}
 
 function HomeContainer({
   topRatedMovies = [],
@@ -23,14 +24,14 @@ function HomeContainer({
   seriesAiringToday = [],
   seriesOntheAir = [],
 }) {
-  // console.log(selectedCategory.movies[0]);
-  console.log(seriesAiringToday);
   return (
     <div>
       {moviesInTheaters.length > 0 ? (
         <FeaturedMovie movie={moviesInTheaters?.[0]} />
       ) : selectedCategory?.movies ? (
         <FeaturedMovie movie={selectedCategory?.movies[0]} />
+      ) : popularMovies.length > 0 ? (
+        <FeaturedMovie movie={popularMovies?.[getRandomInteger(0, 12)]} />
       ) : (
         ""
       )}
@@ -48,24 +49,35 @@ function HomeContainer({
           movies={selectedCategory.movies}
         />
       )}
+
       {upcomingMovies.length > 0 && (
         <MoviesSection
           title="Upcoming Movies"
           movies={upcomingMovies.slice(0, 12)}
         />
       )}
+
       {moviesInTheaters.length > 0 && (
         <MoviesSection
           title="Movies in Theaters"
           movies={moviesInTheaters.slice(0, 18)}
         />
       )}
+
       {popularMovies.length > 0 && (
         <MoviesSection
           title="Popular Movies"
           movies={popularMovies.slice(0, 12)}
         />
       )}
+
+      {popularSeries.length > 0 && (
+        <MoviesSection
+          title="Popular Series"
+          movies={popularSeries.slice(0, 12)}
+        />
+      )}
+
       {topRatedMovies.length > 0 && (
         <MoviesSection
           title="Top Rated Movies"
@@ -76,15 +88,10 @@ function HomeContainer({
       {topRatedSeries.length > 0 && (
         <MoviesSection
           title="Top Rated Series"
-          movies={topRatedSeries.slice(0, 12)}
+          movies={topRatedSeries.slice(0, 6)}
         />
       )}
-      {popularSeries.length > 0 && (
-        <MoviesSection
-          title="Popular Series"
-          movies={popularSeries.slice(0, 18)}
-        />
-      )}
+
       {seriesAiringToday.length > 0 && (
         <MoviesSection
           title="Series Airing Today"

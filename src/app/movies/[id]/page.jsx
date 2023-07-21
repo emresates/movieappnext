@@ -13,7 +13,6 @@ async function MoviePage({ params, searchParams }) {
   if (!movieDetail) {
     notFound();
   }
-  console.log(movieDetail);
   const genreNames = movieDetail.genres.map((genre) => genre.name).join(", ");
   const formattedBudget = movieDetail.budget.toLocaleString("tr-TR", {
     style: "currency",

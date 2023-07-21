@@ -12,7 +12,6 @@ async function MoviePage({ params, searchParams }) {
   if (!serieDetail) {
     notFound();
   }
-  console.log(serieDetail);
   const genreNames = serieDetail?.genres?.map((genre) => genre.name).join(", ");
 
   return (
