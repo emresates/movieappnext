@@ -21,7 +21,7 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
 
       <div className={styles.actionButtons}>
         <Link className={styles.playButton} href={`/movie/${movie.id}`}>
-          Play
+          Read
         </Link>
         <button className={styles.addButton}>
           <FaPlus />

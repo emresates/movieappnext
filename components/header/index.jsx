@@ -17,7 +17,7 @@ function Header() {
           <Link href="/movies">Movies</Link>
           <Link href="/series">Series</Link>
           <Link href="/categories">Categories</Link>
-          <Link href="/">Kids</Link>
+          <Link href="/">Sign In</Link>
         </nav>
       </div>
     </header>

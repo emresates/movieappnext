@@ -13,7 +13,7 @@ function MoviesSection({ title, movies }) {
           <div className={styles.movie} key={movie.id}>
             <Link
               href={`${
-                title.toLowerCase().includes("series")
+                title?.toLowerCase().includes("series")
                   ? `/series/${movie.id}`
                   : `/movies/${movie.id}`
               }`}
@@ -32,5 +32,4 @@ function MoviesSection({ title, movies }) {
   );
 }
 
-// export { MoviesSectionLoading } from "./loading";
 export { MoviesSection };
