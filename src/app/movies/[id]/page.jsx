@@ -15,12 +15,10 @@ async function MoviePage({ params, searchParams }) {
   }
   console.log(movieDetail);
   const genreNames = movieDetail.genres.map((genre) => genre.name).join(", ");
-  console.log(genreNames);
   const formattedBudget = movieDetail.budget.toLocaleString("tr-TR", {
     style: "currency",
     currency: "USD",
   });
-  console.log(formattedBudget);
   return (
     <>
       <div className={styles.movieWrapper}>
@@ -35,7 +33,7 @@ async function MoviePage({ params, searchParams }) {
         <div className={styles.moviePoster}>
           <Image
             unoptimized
-            src={`https://image.tmdb.org/t/p/original${movieDetail.poster_path}`}
+            src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}
             alt={movieDetail.title}
             fill
           />
