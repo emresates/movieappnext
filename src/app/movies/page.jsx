@@ -31,7 +31,6 @@ async function Movies({ params }) {
     moviesInTheatersPromise,
     categoryPromise,
   ]);
-
   return (
     <HomeContainer
       topRatedMovies={topRatedMovies}
@@ -40,7 +39,7 @@ async function Movies({ params }) {
       moviesInTheaters={moviesInTheaters}
       categories={categories}
       selectedCategory={{
-        id: params?.category?.[0] || "",
+        id: params?.categories?.[0] || "",
         movies: selectedCategory ? selectedCategory.slice(0, 21) : [],
       }}
     />

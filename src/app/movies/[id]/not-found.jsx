@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function Movie404() {
+function notFound() {
   return (
     <div
       style={{
@@ -23,4 +23,4 @@ function Movie404() {
   );
 }
 
-export default Movie404;
+export default notFound;

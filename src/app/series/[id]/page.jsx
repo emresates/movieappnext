@@ -5,15 +5,16 @@ import styles from "./styles.module.scss";
 
 import Image from "next/image";
 //* Query
-import { getSerie } from "@/services/series.service";
+import { getSerie, getSerieVideos } from "@/services/series.service";
 
 async function MoviePage({ params, searchParams }) {
   const serieDetail = await getSerie(params.id);
+  const serieVideos = await getSerieVideos(params.id);
   if (!serieDetail) {
     notFound();
   }
   const genreNames = serieDetail?.genres?.map((genre) => genre.name).join(", ");
-
+  console.log(serieVideos);
   return (
     <>
       <div className={styles.movieWrapper}>
