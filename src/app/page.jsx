@@ -4,7 +4,7 @@ import HomeContainer from "@/containers/home";
 import { getTopRatedMovies, getPopularMovies } from "@/services/movie.service";
 import { getPopularSeries, getTopRatedSeries } from "@/services/series.service";
 
-async function Home({ params }) {
+async function Home() {
   const topRatedPromise = getTopRatedMovies();
   const popularPromise = getPopularMovies();
   const topRatedSeriesPromise = getTopRatedSeries();
@@ -21,7 +21,6 @@ async function Home({ params }) {
     topRatedSeriesPromise,
     popularSeriesPromise,
   ]);
-
   return (
     <HomeContainer
       topRatedMovies={topRatedMovies}
