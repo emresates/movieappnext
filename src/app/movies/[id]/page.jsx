@@ -21,26 +21,44 @@ function findTeaserKey(data) {
   return null;
 }
 
+function formatDate(dateString) {
+  const dateParts = dateString.split("-");
+  const day = dateParts[2];
+  const month = dateParts[1];
+  const year = dateParts[0];
+
+  return `${day} ${month} ${year}`;
+}
+
 async function MoviePage({ params, searchParams }) {
   const movieDetail = await getMovie(params.id);
   const movieVideo = await getMovieVideos(params.id);
   const { backdrops: movieImages } = await getMovieImages(params.id);
 
-  console.log(movieImages);
+  // console.log(movieDetail);
+
   if (movieDetail.success == false) {
     notFound();
   }
-  const genreNames = movieDetail?.genres?.map((genre) => genre.name).join(", ");
   const formattedBudget = movieDetail?.budget?.toLocaleString("tr-TR", {
     style: "currency",
     currency: "USD",
   });
   const teaserKey = findTeaserKey(movieVideo.results);
+  const formattedDate = formatDate(movieDetail.release_date);
 
   return (
     <>
       <div className={styles.movieWrapper}>
         <h1 className={styles.movieTitle}>{movieDetail.title}</h1>
+        <Image
+          unoptimized
+          src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}
+          alt={movieDetail.title}
+          className={styles.backgroundImg}
+          width={100}
+          height={100}
+        />
         <div className={styles.moviePoster}>
           <Image
             unoptimized
@@ -51,29 +69,29 @@ async function MoviePage({ params, searchParams }) {
           <iframe
             src={`https://www.youtube.com/embed/${teaserKey}`}
             allowfullscreen
-          />
-          <Image
-            unoptimized
-            src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}
-            alt={movieDetail.title}
-            fill
+            width={700}
           />
 
-          {movieImages.map((image) => {
-            return (
-              <Image
-                unoptimized
-                src={`https://image.tmdb.org/t/p/original${image.file_path}`}
-                alt={movieDetail.title}
-                fill
-              />
-            );
-          })}
+          <div className={styles.posters}>
+            {movieImages.map((image) => {
+              return (
+                <img
+                  src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+                  alt={movieDetail.title}
+                />
+              );
+            })}
+          </div>
         </div>
+        <ul>
+          {movieDetail?.genres?.map((genre) => (
+            <li>{genre.name}</li>
+          ))}
+        </ul>
         <p className={`${styles.overview}`}>{movieDetail.overview}</p>
-        <p>Genres: {genreNames}</p>
+
         <p>Budget: {formattedBudget}</p>
-        <p>Release Data: {movieDetail.release_date} </p>
+        <p>Release Data: {formattedDate} </p>
         <p>Length: {movieDetail.runtime}</p>
         <p>Language: {movieDetail.original_language} </p>
       </div>
