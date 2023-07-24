@@ -1,7 +1,7 @@
 import React from "react";
 
 import { FeaturedMovie } from "@/components/featured-movie";
-import { Categories } from "@/components/categories";
+import { CategorieNames } from "@/components/categorie-names";
 import { MoviesSection } from "@/components/movies-section";
 import { FeaturedSerie } from "@/components/featured-serie";
 
@@ -17,7 +17,7 @@ function HomeContainer({
   upcomingMovies = [],
   moviesInTheaters = [],
   categories = [],
-  selectedCategory,
+  selectedCategory = "",
 
   topRatedSeries = [],
   popularSeries = [],
@@ -33,22 +33,11 @@ function HomeContainer({
       ) : popularMovies.length > 0 ? (
         <FeaturedMovie movie={popularMovies?.[getRandomInteger(0, 12)]} />
       ) : (
-        ""
+        topRatedSeries.length > 0 && (
+          <FeaturedSerie serie={topRatedSeries?.[getRandomInteger(0, 12)]} />
+        )
       )}
-      {seriesOntheAir.length > 0 && (
-        <FeaturedSerie serie={seriesOntheAir?.[0]} />
-      )}
-      <Categories categories={categories} />
-      {selectedCategory?.movies?.length > 0 && (
-        <MoviesSection
-          title={
-            categories?.find(
-              (genre) => genre.id.toString() === selectedCategory.id
-            )?.name
-          }
-          movies={selectedCategory.movies}
-        />
-      )}
+      <CategorieNames id={selectedCategory.id} categories={categories} />
 
       {upcomingMovies.length > 0 && (
         <MoviesSection
