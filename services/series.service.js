@@ -31,10 +31,15 @@ const getSerie = async (serieId) => {
   return fetchSeriesApi(`/tv/${serieId}`);
 };
 
+const getSerieVideos = async (serieId) => {
+  return fetchSeriesApi(`/tv/${serieId}/videos`);
+};
+
 export {
   getTopRatedSeries,
   getPopularSeries,
   getSeriesAiringToday,
   getSeriesOntheAir,
   getSerie,
+  getSerieVideos
 };

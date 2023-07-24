@@ -28,15 +28,26 @@ const getMoviesinTheaters = async () => {
 };
 
 const getCategories = async () => {
-  return fetchMovieApi("/genre/movie/list", "&page=1");
+  return fetchMovieApi("/genre/movie/list");
 };
 
-const getSingleCategory = async (genreId) => {
-  return fetchMovieApi("/discover/movie", `with_genres=${genreId}`);
+const getSingleCategory = async (genreId, page) => {
+  return fetchMovieApi(
+    "/discover/movie",
+    `with_genres=${genreId}&page=${page}`
+  );
 };
 
 const getMovie = async (movieId) => {
   return fetchMovieApi(`/movie/${movieId}`);
+};
+
+const getMovieVideos = async (movieId) => {
+  return fetchMovieApi(`/movie/${movieId}/videos`);
+};
+
+const getMovieImages = async (movieId) => {
+  return fetchMovieApi(`/movie/${movieId}/images`);
 };
 
 export {
@@ -48,4 +59,6 @@ export {
   getCategories,
   getSingleCategory,
   getMovie,
+  getMovieVideos,
+  getMovieImages,
 };
