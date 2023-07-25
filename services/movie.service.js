@@ -50,6 +50,10 @@ const getMovieImages = async (movieId) => {
   return fetchMovieApi(`/movie/${movieId}/images`);
 };
 
+const getMovieCredits = async (movieId) => {
+  return fetchMovieApi(`/movie/${movieId}/credits`);
+};
+
 export {
   fetchMovieApi,
   getTopRatedMovies,
@@ -61,4 +65,5 @@ export {
   getMovie,
   getMovieVideos,
   getMovieImages,
+  getMovieCredits
 };

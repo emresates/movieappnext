@@ -21,6 +21,7 @@ async function Home() {
     topRatedSeriesPromise,
     popularSeriesPromise,
   ]);
+
   return (
     <HomeContainer
       topRatedMovies={topRatedMovies}

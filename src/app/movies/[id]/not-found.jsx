@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import Link from "next/link";
 
 function notFound() {
   return (
@@ -13,12 +13,17 @@ function notFound() {
       }}
     >
       <h1>We couldn&apos;t find the movie you looking for!</h1>
-      <Link
-        href="/"
-        style={{ textDecoration: "underline", fontSize: 20, marginTop: 8 }}
+      <div
+        onClick={() => window.history.back()}
+        style={{
+          cursor: "pointer",
+          textDecoration: "underline",
+          fontSize: 20,
+          marginTop: 8,
+        }}
       >
-        Go home
-      </Link>
+        Go Previous Page
+      </div>
     </div>
   );
 }

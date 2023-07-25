@@ -14,6 +14,15 @@
     filter: blur(50px) brightness(30%) grayscale(80%);
   }
 
+  .movieTitle {
+    font-size: 3rem;
+    margin-bottom: -0.5rem;
+  }
+
+  .info {
+    margin-bottom: 0.5rem;
+  }
+
   .moviePoster {
     display: flex;
     height: 400px;
@@ -27,7 +36,7 @@
       height: 100%;
 
       &::-webkit-scrollbar {
-        width: 0.5rem; /* Genişlik istediğiniz gibi ayarlayın */
+        width: 0.5rem;
       }
 
       &::-webkit-scrollbar-track {
@@ -35,8 +44,8 @@
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: #8c8c8c; /* Scrollbar rengini istediğiniz gibi ayarlayın */
-        border-radius: 0.25rem; /* Köşeleri yuvarlama, isteğe bağlı */
+        background-color: #8c8c8c;
+        border-radius: 0.25rem;
       }
       img {
         width: 50px;
@@ -44,6 +53,48 @@
     }
   }
 
+  .detail {
+    display: flex;
+    .overview {
+      font-size: 1.1rem;
+      width: 70%;
+
+      p {
+        border-bottom: 1px solid rgb(77, 77, 77);
+        padding: 0.5rem 0;
+      }
+    }
+
+    .right {
+      width: 30%;
+      cursor: pointer;
+
+      .inner {
+        border: 1px solid rgb(77, 77, 77);
+        padding: 0 0.4rem;
+        display: flex;
+        align-items: center;
+        margin: 2rem auto;
+        width: 80%;
+        svg {
+          font-size: 2rem;
+          margin-right: 1rem;
+        }
+
+        div {
+          :first-child {
+            font-weight: bold;
+            margin-bottom: -0.2rem;
+          }
+          :nth-child(2) {
+            font-weight: 100;
+          }
+        }
+      }
+    }
+  }
+
+  //* Genres
   ul {
     display: flex;
     list-style-type: none;
