@@ -6,11 +6,11 @@ import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";
 
 function FeaturedSerie({ serie = {}, isCompact = true }) {
-  const { original_name, overview, backdrop_path } = serie;
-//   console.log(serie);
+  const { original_name, name, overview, backdrop_path } = serie;
+  // console.log(serie);
   return (
     <div className={styles.movieWrapper}>
-      <h1 className={styles.movieTitle}>{original_name}</h1>
+      <h1 className={styles.movieTitle}>{name}</h1>
       <p
         className={`${styles.overview} ${
           isCompact ? styles.shortOverview : ""

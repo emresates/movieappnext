@@ -3,13 +3,13 @@ import Link from "next/link";
 
 import styles from "./styles.module.css";
 
-function CategorieNames({ id, categories }) {
+function CategorieNamesSeries({ id, categories }) {
   return (
     <div className={styles.categories}>
       <Link
         style={{ display: id ? "flex" : "none" }}
         className={styles.clear}
-        href={`/movies`}
+        href={`/series`}
       >
         <div>Clear</div>
       </Link>
@@ -19,7 +19,7 @@ function CategorieNames({ id, categories }) {
           className={
             id != category.id ? styles.category : styles.categoryActive
           }
-          href={`/categories/${category.id}`}
+          href={`/categorie/${category.id}`}
         >
           <div>{category.name}</div>
         </Link>
@@ -28,4 +28,4 @@ function CategorieNames({ id, categories }) {
   );
 }
 
-export { CategorieNames };
+export { CategorieNamesSeries };

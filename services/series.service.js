@@ -27,6 +27,14 @@ const getSeriesOntheAir = async () => {
   return fetchSeriesApi("/tv/on_the_air", "&page=1");
 };
 
+const getSeriesCategories = async () => {
+  return fetchSeriesApi("/genre/tv/list");
+};
+
+const getSeriesSingleCategorie = async (genreId, page) => {
+  return fetchSeriesApi("/discover/tv", `with_genres=${genreId}&page=${page}`);
+};
+
 const getSerie = async (serieId) => {
   return fetchSeriesApi(`/tv/${serieId}`);
 };
@@ -48,6 +56,8 @@ export {
   getPopularSeries,
   getSeriesAiringToday,
   getSeriesOntheAir,
+  getSeriesCategories,
+  getSeriesSingleCategorie,
   getSerie,
   getSerieVideos,
   getSerieImages,

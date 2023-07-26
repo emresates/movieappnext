@@ -1,9 +1,10 @@
 import React from "react";
 
 import { FeaturedMovie } from "@/components/featured-movie";
-import { CategorieNames } from "@/components/categorie-names";
+import { CategorieNamesMovies } from "@/components/categorie-names-movies";
 import { MoviesSection } from "@/components/movies-section";
 import { FeaturedSerie } from "@/components/featured-serie";
+import { CategorieNamesSeries } from "@/components/categorie-names-series";
 
 function getRandomInteger(min, max) {
   const number = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -17,6 +18,7 @@ function HomeContainer({
   upcomingMovies = [],
   moviesInTheaters = [],
   categories = [],
+  seriesCategories = [],
   selectedCategory = "",
 
   topRatedSeries = [],
@@ -37,7 +39,19 @@ function HomeContainer({
           <FeaturedSerie serie={topRatedSeries?.[getRandomInteger(0, 12)]} />
         )
       )}
-      <CategorieNames id={selectedCategory.id} categories={categories} />
+      {categories.length > 0 && (
+        <CategorieNamesMovies
+          id={selectedCategory.id}
+          categories={categories}
+        />
+      )}
+
+      {seriesCategories.length > 0 && (
+        <CategorieNamesSeries
+          id={selectedCategory.id}
+          categories={seriesCategories}
+        />
+      )}
 
       {upcomingMovies.length > 0 && (
         <MoviesSection

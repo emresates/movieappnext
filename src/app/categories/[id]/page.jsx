@@ -1,23 +1,26 @@
 import React from "react";
 
-import { getCategories, getSingleCategory } from "@/services/movie.service";
-import { FeaturedMovie } from "@/components/featured-movie";
 import { CategorieSection } from "@/components/categorie-section";
-import { CategorieNames } from "@/components/categorie-names";
+import {
+  getSeriesCategories,
+  getSeriesSingleCategorie,
+} from "@/services/series.service";
+import { FeaturedSerie } from "@/components/featured-serie";
+import { CategorieNamesSeries } from "@/components/categorie-names-series";
 
-async function Categories({ params }) {
+async function Categorie({ params }) {
   let selectedCategory;
 
-  const categoryPromise = getCategories();
+  const categoryPromise = getSeriesCategories();
   const [{ genres: categories }] = await Promise.all([categoryPromise]);
-  const results = await getSingleCategory(params.id, 1);
+  const results = await getSeriesSingleCategorie(params.id, 1);
   // console.log(results);
-  console.log("Categories worked", params);
+  console.log("Series Categories worked", params);
 
   return (
     <>
-      <FeaturedMovie movie={results?.results[0]} />
-      <CategorieNames id={params?.id} categories={categories} />
+      <FeaturedSerie movie={results?.results[0]} />
+      <CategorieNamesSeries id={params?.id} categories={categories} />
       <CategorieSection
         title={
           categories?.find(
@@ -30,4 +33,4 @@ async function Categories({ params }) {
   );
 }
 
-export default Categories;
+export default Categorie;
