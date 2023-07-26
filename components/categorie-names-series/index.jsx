@@ -19,7 +19,7 @@ function CategorieNamesSeries({ id, categories }) {
           className={
             id != category.id ? styles.category : styles.categoryActive
           }
-          href={`/categorie/${category.id}`}
+          href={`/categories/${category.id}`}
         >
           <div>{category.name}</div>
         </Link>

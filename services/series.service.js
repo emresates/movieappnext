@@ -32,7 +32,10 @@ const getSeriesCategories = async () => {
 };
 
 const getSeriesSingleCategorie = async (genreId, page) => {
-  return fetchSeriesApi("/discover/tv", `with_genres=${genreId}&page=${page}`);
+  return fetchSeriesApi(
+    "/discover/tv",
+    `with_genres=${genreId}&page=${page}&sort_by=popularity.desc`
+  );
 };
 
 const getSerie = async (serieId) => {

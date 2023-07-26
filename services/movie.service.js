@@ -34,7 +34,7 @@ const getCategories = async () => {
 const getSingleCategory = async (genreId, page) => {
   return fetchMovieApi(
     "/discover/movie",
-    `with_genres=${genreId}&page=${page}`
+    `with_genres=${genreId}&page=${page}&sort_by=popularity.desc`
   );
 };
 
@@ -65,5 +65,5 @@ export {
   getMovie,
   getMovieVideos,
   getMovieImages,
-  getMovieCredits
+  getMovieCredits,
 };

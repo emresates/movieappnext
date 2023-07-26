@@ -126,7 +126,9 @@ async function SeriePage({ params, searchParams }) {
         {/* Genres */}
         <ul>
           {serieDetail?.genres?.map((genre) => (
-            <li>{genre.name}</li>
+            <li>
+              <Link href={`/categories/${genre.id}`}>{genre.name}</Link>
+            </li>
           ))}
         </ul>
 

@@ -8,7 +8,7 @@ import { CategorieNamesSeries } from "@/components/categorie-names-series";
 
 function getRandomInteger(min, max) {
   const number = Math.floor(Math.random() * (max - min + 1)) + min;
-  console.log("number", number);
+  // console.log("number", number);
   return number;
 }
 
@@ -39,6 +39,7 @@ function HomeContainer({
           <FeaturedSerie serie={topRatedSeries?.[getRandomInteger(0, 12)]} />
         )
       )}
+      
       {categories.length > 0 && (
         <CategorieNamesMovies
           id={selectedCategory.id}

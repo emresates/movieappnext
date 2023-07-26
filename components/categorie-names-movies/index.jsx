@@ -19,7 +19,7 @@ function CategorieNamesMovies({ id, categories }) {
           className={
             id != category.id ? styles.category : styles.categoryActive
           }
-          href={`/categories/${category.id}`}
+          href={`/categorie/${category.id}`}
         >
           <div>{category.name}</div>
         </Link>

@@ -13,17 +13,16 @@
   letter-spacing: -1px;
   font-weight: 900;
   line-height: 72px;
-  max-width: 25ch;
 }
 
 .overview {
   font-size: 24px;
-  max-width: 50ch;
+  max-width: 50%;
 }
 
 .shortOverview {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
