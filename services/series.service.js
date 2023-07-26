@@ -35,11 +35,21 @@ const getSerieVideos = async (serieId) => {
   return fetchSeriesApi(`/tv/${serieId}/videos`);
 };
 
+const getSerieImages = async (serieId) => {
+  return fetchSeriesApi(`/tv/${serieId}/images`);
+};
+
+const getSerieCredits = async (serieId) => {
+  return fetchSeriesApi(`/tv/${serieId}/credits`);
+};
+
 export {
   getTopRatedSeries,
   getPopularSeries,
   getSeriesAiringToday,
   getSeriesOntheAir,
   getSerie,
-  getSerieVideos
+  getSerieVideos,
+  getSerieImages,
+  getSerieCredits,
 };
