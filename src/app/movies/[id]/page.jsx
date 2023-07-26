@@ -14,6 +14,7 @@ import {
   getMovieImages,
   getMovieVideos,
 } from "@/services/movie.service";
+import Link from "next/link";
 
 //* Teaser Key
 function findTeaserKey(data) {
@@ -63,7 +64,6 @@ async function MoviePage({ params, searchParams }) {
     movieImagesPromise,
   ]);
 
-  // console.log(movieCreditsCast);
   // console.log(movieDetail);
 
   if (movieDetail.success == false) {
@@ -74,9 +74,7 @@ async function MoviePage({ params, searchParams }) {
     currency: "USD",
   });
 
-  const teaserKey = findTeaserKey(movieVideo);
-  const formattedDate = formatDate(movieDetail.release_date);
-  //* Director
+  //* Details
   const directorPerson = movieCreditsCrew.find(
     (person) => person.job === "Director"
   );
@@ -85,6 +83,8 @@ async function MoviePage({ params, searchParams }) {
     .map((person) => person.name);
   const castNames = firstFiveNames.join(" • ");
   const length = Lenght(movieDetail.runtime);
+  const teaserKey = findTeaserKey(movieVideo);
+  const formattedDate = formatDate(movieDetail.release_date);
 
   return (
     <>
@@ -133,7 +133,9 @@ async function MoviePage({ params, searchParams }) {
         {/* Genres */}
         <ul>
           {movieDetail?.genres?.map((genre) => (
-            <li>{genre.name}</li>
+            <li>
+              <Link href={`/categories/${genre.id}`}>{genre.name}</Link>
+            </li>
           ))}
         </ul>
         {/* Detail */}
