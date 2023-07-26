@@ -47,6 +47,10 @@ function Lenght(min) {
 async function MoviePage({ params, searchParams }) {
   const movieDetail = await getMovie(params.id);
 
+  if (movieDetail.success == false) {
+    notFound();
+  }
+  
   //* Promises
   const movieCreditsPromise = getMovieCredits(params.id);
   const movieImagesPromise = getMovieImages(params.id);
@@ -66,9 +70,6 @@ async function MoviePage({ params, searchParams }) {
 
   // console.log(movieDetail);
 
-  if (movieDetail.success == false) {
-    notFound();
-  }
   const formattedBudget = movieDetail?.budget?.toLocaleString("tr-TR", {
     style: "currency",
     currency: "USD",

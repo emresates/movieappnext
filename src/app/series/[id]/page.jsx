@@ -38,12 +38,11 @@ function formatDate(firstData, lastData) {
 
 async function SeriePage({ params, searchParams }) {
   const serieDetail = await getSerie(params.id);
-
-  if (!serieDetail) {
+  if (serieDetail.success == false) {
     notFound();
   }
 
-  console.log(serieDetail);
+  // console.log(serieDetail);
 
   //* Promises
   const serieCreditsPromise = getSerieCredits(params.id);

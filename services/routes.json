@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "name": "Movies",
+      "path": "/movies"
+    },
+    {
+      "name": "Series",
+      "path": "/series"
+    },
+    {
+      "name": "Login",
+      "path": "/login"
+    }
+  ]
+}
