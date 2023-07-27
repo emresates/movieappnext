@@ -1,0 +1,65 @@
+.header {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #fafafa;
+    }
+    .navigationMenu {
+      display: flex;
+      gap: 48px;
+      color: #fafafa;
+      font-weight: 700;
+      letter-spacing: 2px;
+      align-items: center;
+
+      form {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .input {
+          width: 35px;
+          height: 35px;
+          padding: 5px 16px;
+          border-radius: 50px;
+          outline: none;
+          transition: all 0.2s;
+          font-style: italic;
+          background-color: transparent;
+          border: 2px solid white;
+          color: white;
+
+          &:hover,
+          &:focus {
+            width: 150px;
+            font-size: 1rem;
+            padding: 5px 10px;
+          }
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 3px;
+          bottom: 0;
+          right: -8px;
+          transform: rotate(40deg);
+          background-color: #fafafa;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  color: red;
+}
