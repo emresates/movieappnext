@@ -36,6 +36,13 @@ function formatDate(firstData, lastData) {
   return `${yearFirst}-${yearLast}`;
 }
 
+export async function generateMetadata({ params }) {
+  const serieDetail = await getSerie(params.id);
+  return {
+    title: serieDetail.name,
+  };
+}
+
 async function SeriePage({ params, searchParams }) {
   const serieDetail = await getSerie(params.id);
   if (serieDetail.success == false) {

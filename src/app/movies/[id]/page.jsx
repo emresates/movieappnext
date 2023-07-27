@@ -16,6 +16,13 @@ import {
 } from "@/services/movie.service";
 import Link from "next/link";
 
+export async function generateMetadata({ params }) {
+  const movieDetail = await getMovie(params.id);
+  return {
+    title: movieDetail.title,
+  };
+}
+
 //* Teaser Key
 function findTeaserKey(data) {
   for (const item of data) {
@@ -50,7 +57,7 @@ async function MoviePage({ params, searchParams }) {
   if (movieDetail.success == false) {
     notFound();
   }
-  
+
   //* Promises
   const movieCreditsPromise = getMovieCredits(params.id);
   const movieImagesPromise = getMovieImages(params.id);
@@ -143,7 +150,7 @@ async function MoviePage({ params, searchParams }) {
         <div className={styles.detail}>
           <div className={styles.overview}>
             <p>{movieDetail.overview}</p>
-            <p>Director: {directorPerson.name} </p>
+            <p>Director: {directorPerson?.name} </p>
             <p>Cast: {castNames} </p>
           </div>
           <div className={styles.right}>
