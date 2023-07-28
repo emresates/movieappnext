@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa";
 
 import styles from "./styles.module.css";
 
-function FeaturedMovie({ movie = {}, isCompact = true }) {
+export default function FeaturedMovie({ movie = {}, isCompact = true }) {
   const { title, overview, backdrop_path } = movie;
 
   return (
@@ -40,6 +40,3 @@ function FeaturedMovie({ movie = {}, isCompact = true }) {
     </div>
   );
 }
-
-// export { FeatureMovieLoading } from "./loading";
-export { FeaturedMovie };

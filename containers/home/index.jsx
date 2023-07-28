@@ -1,8 +1,8 @@
 import React from "react";
 
-import { FeaturedMovie } from "@/components/featured-movie";
+import FeaturedMovie from "@/components/featured-movie";
 import { CategorieNamesMovies } from "@/components/categorie-names-movies";
-import { MoviesSection } from "@/components/movies-section";
+import MoviesSection from "@/components/movies-section";
 import { FeaturedSerie } from "@/components/featured-serie";
 import { CategorieNamesSeries } from "@/components/categorie-names-series";
 
@@ -39,7 +39,7 @@ function HomeContainer({
           <FeaturedSerie serie={topRatedSeries?.[getRandomInteger(0, 12)]} />
         )
       )}
-      
+
       {categories.length > 0 && (
         <CategorieNamesMovies
           id={selectedCategory.id}

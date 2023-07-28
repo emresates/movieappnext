@@ -1,0 +1,123 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  p {
+    z-index: 9;
+    position: absolute;
+    right: 15%;
+    bottom: 10%;
+
+    span {
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  .login,
+  .signup {
+    width: 100%;
+    height: 100%;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 50%;
+      transition: all 1s;
+    }
+
+    form {
+      width: 500px;
+      position: absolute;
+      right: 60%;
+      top: 35%;
+      transition: right 0.5s, opacity 0.2s;
+      z-index: -2;
+      opacity: 0%;
+
+      input {
+        width: 100%;
+        border-radius: 10px;
+        padding: 0.2rem 1.3rem;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        box-shadow: 2px 2px 2px white;
+        margin: 0.3rem 0 1rem 0;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+        font-style: italic;
+        outline: none;
+
+        &:focus {
+          border: 1px solid red;
+          box-shadow: 5px 5px 5px red;
+        }
+      }
+
+      label {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      button {
+        float: right;
+        padding: 0.2rem 0.4rem;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        border: 1px solid white;
+        transition: transform 0.1s, background-color 0.3s, color 0.3s;
+        box-shadow: 2px 2px 2px white;
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+
+        &:active {
+          transform: translate(2px, 2px);
+        }
+      }
+    }
+
+    &.active {
+      form {
+        transition: right 0.3s, opacity 0.2s 0.2s;
+        right: 10%;
+        z-index: 2;
+        opacity: 100%;
+      }
+    }
+  }
+
+  .signup {
+    form {
+      width: 500px;
+      position: absolute;
+      top: 30%;
+      right: 10%;
+      z-index: -2;
+      opacity: 0%;
+      transition: right 0.5s, opacity 0.2s;
+      right: 60%;
+    }
+    &.active {
+      form {
+        right: 10%;
+        transition: right 0.3s, opacity 0.2s 0.2s;
+        z-index: 2;
+        opacity: 100%;
+      }
+    }
+  }
+}
