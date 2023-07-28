@@ -1,4 +1,4 @@
-import { MoviesSection } from "@/components/movies-section";
+import MoviesSection from "@/components/movies-section";
 import { search } from "@/services/general.service";
 import React from "react";
 

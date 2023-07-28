@@ -142,7 +142,7 @@ async function MoviePage({ params, searchParams }) {
         <ul>
           {movieDetail?.genres?.map((genre) => (
             <li>
-              <Link href={`/categories/${genre.id}`}>{genre.name}</Link>
+              <Link href={`/categorie/${genre.id}`}>{genre.name}</Link>
             </li>
           ))}
         </ul>

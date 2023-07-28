@@ -1,7 +1,7 @@
 import React from "react";
 
 import { getCategories, getSingleCategory } from "@/services/movie.service";
-import { FeaturedMovie } from "@/components/featured-movie";
+import FeaturedMovie from "@/components/featured-movie";
 import { CategorieSection } from "@/components/categorie-section";
 import { CategorieNamesMovies } from "@/components/categorie-names-movies";
 
