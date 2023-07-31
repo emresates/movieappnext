@@ -13,7 +13,7 @@ function CategorieNamesMovies({ id, categories }) {
       >
         <div>Clear</div>
       </Link>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <Link
           key={category.id}
           className={

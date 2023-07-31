@@ -1,10 +1,13 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
 import FeaturedMovie from "@/components/featured-movie";
 import { CategorieNamesMovies } from "@/components/categorie-names-movies";
-import MoviesSection from "@/components/movies-section";
+// import MoviesSection from "@/components/movies-section";
 import { FeaturedSerie } from "@/components/featured-serie";
 import { CategorieNamesSeries } from "@/components/categorie-names-series";
+
+const MoviesSection = dynamic(() => import("@/components/movies-section"));
 
 function getRandomInteger(min, max) {
   const number = Math.floor(Math.random() * (max - min + 1)) + min;

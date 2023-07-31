@@ -3,7 +3,7 @@ import { Loading } from "@/components/loading";
 
 import styles from "./styles.module.css";
 
-function FeatureMovieLoading() {
+function FeatureSerieLoading() {
   return (
     <div style={{ height: "35vh" }} className={styles.movieWrapper}>
       <Loading />
@@ -11,4 +11,4 @@ function FeatureMovieLoading() {
   );
 }
 
-export { FeatureMovieLoading };
+export { FeatureSerieLoading };

@@ -2,16 +2,16 @@ import React from "react";
 import Skeleton from "@/components/skeleton";
 import styles from "./styles.module.css";
 
-function CategoriesLoading() {
+function CategorieNamesSeriesLoading() {
   return (
     <div className={styles.categories}>
-      {Array(20)
+      {Array(16)
         .fill(null)
         .map((_, index) => (
-          <Skeleton key={index} height={100} />
+          <Skeleton key={index} width={70} height={44} />
         ))}
     </div>
   );
 }
 
-export { CategoriesLoading };
+export { CategorieNamesSeriesLoading };

@@ -1,14 +1,12 @@
 import React from "react";
 
-import { FeatureMovieLoading } from "@/components/featured-movie/loading";
-import { CategorieNamesMoviesLoading } from "@/components/categorie-names-movies/loading";
 import { MoviesSectionLoading } from "@/components/movies-section/loading";
+import { FeatureMovieLoading } from "@/components/featured-movie/loading";
 
-export default function MovieLoading() {
+export default function HomeLoading() {
   return (
     <div style={{ height: "100%" }}>
       <FeatureMovieLoading />
-      <CategorieNamesMoviesLoading />
       <MoviesSectionLoading />
       <MoviesSectionLoading />
       <MoviesSectionLoading />

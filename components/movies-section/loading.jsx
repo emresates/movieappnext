@@ -8,7 +8,7 @@ function MoviesSectionLoading() {
     <div className={styles.moviesSection}>
       <Skeleton width={128} height={36} />
       <div className={styles.movies}>
-        {Array(5)
+        {Array(12)
           .fill(null)
           .map((_, index) => (
             <Skeleton key={index} />
