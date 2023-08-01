@@ -1,11 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import Image from "next/image";
-
-import styles from "./styles.module.scss";
-
-//* Icon
-import { CiBookmarkPlus } from "react-icons/ci";
+import MovieDetails from "@/components/movie-details";
 
 //* Services
 import {
@@ -14,7 +9,6 @@ import {
   getMovieImages,
   getMovieVideos,
 } from "@/services/movie.service";
-import Link from "next/link";
 
 export async function generateMetadata({ params }) {
   const movieDetail = await getMovie(params.id);
@@ -45,8 +39,8 @@ function formatDate(dateString) {
 
 //* Lenght Format
 function Lenght(min) {
-  const hours = Math.floor(min / 60); // Saati hesapla
-  const minutes = min % 60; // Dakikayı hesapla
+  const hours = Math.floor(min / 60);
+  const minutes = min % 60;
 
   return `${hours}h ${minutes}m`;
 }
@@ -96,74 +90,21 @@ async function MoviePage({ params, searchParams }) {
 
   return (
     <>
-      <div className={styles.movieWrapper}>
-        <h1 className={styles.movieTitle}>{movieDetail.title}</h1>
-        <p>Original Title: {movieDetail.original_title}</p>
-        <p className={styles.info}>
-          {formattedDate} • {length} • {formattedBudget}
-        </p>
-
-        {/* Background Image */}
-        <Image
-          unoptimized
-          src={`https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`}
-          alt={movieDetail.title}
-          className={styles.backgroundImg}
-          width={100}
-          height={100}
-        />
-        {/* Posters */}
-        <div className={styles.moviePoster}>
-          <Image
-            unoptimized
-            src={`https://image.tmdb.org/t/p/original${movieDetail.poster_path}`}
-            alt={movieDetail.title}
-            fill
-          />
-          <iframe
-            src={`https://www.youtube.com/embed/${teaserKey}`}
-            allowfullscreen
-            width={700}
-          />
-
-          <div className={styles.posters}>
-            {movieImages.map((image, index) => {
-              return (
-                <img
-                  key={index}
-                  src={`https://image.tmdb.org/t/p/original${image.file_path}`}
-                  alt={movieDetail.title}
-                />
-              );
-            })}
-          </div>
-        </div>
-        {/* Genres */}
-        <ul>
-          {movieDetail?.genres?.map((genre) => (
-            <li>
-              <Link href={`/categorie/${genre.id}`}>{genre.name}</Link>
-            </li>
-          ))}
-        </ul>
-        {/* Detail */}
-        <div className={styles.detail}>
-          <div className={styles.overview}>
-            <p>{movieDetail.overview}</p>
-            <p>Director: {directorPerson?.name} </p>
-            <p>Cast: {castNames} </p>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.inner}>
-              <CiBookmarkPlus />
-              <div>
-                <p>Add to Watchlist</p>
-                <p>Added by 333k users</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <MovieDetails
+        title={movieDetail.title}
+        backdrop={movieDetail.backdrop_path}
+        original_title={movieDetail.original_title}
+        date={formattedDate}
+        length={length}
+        budget={formattedBudget}
+        poster={movieDetail.poster_path}
+        teaserKey={teaserKey}
+        images={movieImages}
+        genres={movieDetail.genres}
+        overview={movieDetail.overview}
+        directorPerson={directorPerson.name}
+        castNames={castNames}
+      />
     </>
   );
 }

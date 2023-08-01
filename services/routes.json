@@ -9,10 +9,6 @@
       "path": "/series"
     },
     {
-      "name": "About Us",
-      "path": "/about"
-    },
-    {
       "name": "Login",
       "path": "/login"
     }
