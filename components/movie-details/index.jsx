@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { TbStarsFilled } from "react-icons/tb";
 import { PiStarHalfLight } from "react-icons/pi";
+import CommentsModal from "../commentsModal";
 
 export default function MovieDetails({
   title,
@@ -26,6 +27,8 @@ export default function MovieDetails({
   castNames,
 }) {
   const [showModal, setShowModal] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -33,6 +36,25 @@ export default function MovieDetails({
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const handleAddComment = () => {
+    if (newComment.trim() !== "") {
+      const newComments = [...comments, newComment];
+      setComments(newComments);
+      setNewComment("");
+    }
+  };
+
+  const handleEditComment = (index, editedComment) => {
+    const editedComments = [...comments];
+    editedComments[index] = editedComment;
+    setComments(editedComments);
+  };
+
+  const handleDeleteComment = (index) => {
+    const filteredComments = comments.filter((_, i) => i !== index);
+    setComments(filteredComments);
   };
   return (
     <>
@@ -128,6 +150,15 @@ export default function MovieDetails({
             </div>
           </div>
         </div>
+
+        <CommentsModal
+          newComment={newComment}
+          setNewComment={setNewComment}
+          comments={comments}
+          handleEditComment={handleEditComment}
+          handleDeleteComment={handleDeleteComment}
+          handleAddComment={handleAddComment}
+        />
       </div>
     </>
   );

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap");
+
 .loadingWrapper {
   min-height: 100%;
   min-width: 100%;
@@ -7,23 +9,30 @@
 }
 
 .loading {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
+  width: 75px;
+  height: 75px;
+  display: grid;
+}
+.loading::before,
+.loading::after {
+  content: "";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side, #f81e1e 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  animation: s2 0.5s infinite;
+}
+.loading::before {
+  margin: 8px;
+  filter: hue-rotate(45deg);
+  background-size: 10px 10px;
+  animation-timing-function: linear;
 }
 
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
+@keyframes s2 {
+  100% {
+    transform: rotate(0.5turn);
   }
 }

@@ -73,6 +73,7 @@ async function SeriePage({ params, searchParams }) {
     serieDetail.last_air_date
   );
 
+
   return (
     <>
       <SerieDetails
@@ -83,7 +84,6 @@ async function SeriePage({ params, searchParams }) {
         original_language={serieDetail.original_language}
         runTime={serieDetail.episode_run_time}
         backdrop={serieDetail.backdrop_path}
-        title={serieDetail.title}
         poster={serieDetail.poster_path}
         teaserKey={teaserKey}
         images={serieImages}

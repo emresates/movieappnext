@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { TbStarsFilled } from "react-icons/tb";
 import { PiStarHalfLight } from "react-icons/pi";
+import CommentsModal from "../commentsModal";
 
 export default function SerieDetails({
   name,
@@ -18,7 +19,6 @@ export default function SerieDetails({
   original_language,
   runTime,
   backdrop,
-  title,
   poster,
   teaserKey,
   images,
@@ -30,6 +30,8 @@ export default function SerieDetails({
   episodes,
 }) {
   const [showModal, setShowModal] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -37,6 +39,25 @@ export default function SerieDetails({
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const handleAddComment = () => {
+    if (newComment.trim() !== "") {
+      const newComments = [...comments, newComment];
+      setComments(newComments);
+      setNewComment("");
+    }
+  };
+
+  const handleEditComment = (index, editedComment) => {
+    const editedComments = [...comments];
+    editedComments[index] = editedComment;
+    setComments(editedComments);
+  };
+
+  const handleDeleteComment = (index) => {
+    const filteredComments = comments.filter((_, i) => i !== index);
+    setComments(filteredComments);
   };
   return (
     <>
@@ -76,7 +97,7 @@ export default function SerieDetails({
         <Image
           unoptimized
           src={`https://image.tmdb.org/t/p/original${backdrop}`}
-          alt={title}
+          alt={name}
           className={styles.backgroundImg}
           width={100}
           height={100}
@@ -87,12 +108,12 @@ export default function SerieDetails({
           <Image
             unoptimized
             src={`https://image.tmdb.org/t/p/original${poster}`}
-            alt={title}
+            alt={name}
             fill
           />
           <iframe
             src={`https://www.youtube.com/embed/${teaserKey}`}
-            allowfullscreen
+            allowFullScreen
             width={700}
           />
 
@@ -102,7 +123,7 @@ export default function SerieDetails({
                 <img
                   key={index}
                   src={`https://image.tmdb.org/t/p/original${image.file_path}`}
-                  alt={images.title}
+                  alt={images.name}
                 />
               );
             })}
@@ -112,7 +133,7 @@ export default function SerieDetails({
         {/* Genres */}
         <ul>
           {genres?.map((genre) => (
-            <li>
+            <li key={genre.id}>
               <Link href={`/categories/${genre.id}`}>{genre.name}</Link>
             </li>
           ))}
@@ -138,6 +159,15 @@ export default function SerieDetails({
             </div>
           </div>
         </div>
+
+        <CommentsModal
+          newComment={newComment}
+          setNewComment={setNewComment}
+          comments={comments}
+          handleEditComment={handleEditComment}
+          handleDeleteComment={handleDeleteComment}
+          handleAddComment={handleAddComment}
+        />
       </div>
     </>
   );
