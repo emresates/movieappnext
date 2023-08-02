@@ -4,6 +4,7 @@ import "@/styles/reset.css";
 import "@/styles/global.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const josefinFont = Inconsolata({ subsets: ["latin"] });
 
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={josefinFont.className}>
       <body className="container">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
