@@ -28,6 +28,7 @@ export default function SerieDetails({
   cast,
   seasons,
   episodes,
+  productID,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [comments, setComments] = useState([]);
@@ -167,6 +168,8 @@ export default function SerieDetails({
           handleEditComment={handleEditComment}
           handleDeleteComment={handleDeleteComment}
           handleAddComment={handleAddComment}
+          productID={productID}
+          type="serie"
         />
       </div>
     </>

@@ -141,43 +141,18 @@ function Dashboard() {
             <div className={styles.info}>
               {editMode ? (
                 <>
-                  <label htmlFor="password">Current Password:</label>
-                  <input
+                  <label htmlFor="password">New Password:</label>
+                  {/* <input
                     id="password"
                     type="password"
-                    placeholder="Your Current Password"
-                  />
+                    placeholder="New Password"
+                  /> */}
+                  <p>Password Change is not active</p>
                 </>
               ) : (
                 <p id="password">
                   Password: Don't worry. We don't know either. Only you know ^-^
                 </p>
-              )}
-            </div>
-            <div className={styles.info}>
-              {editMode && (
-                <>
-                  <label htmlFor="passwordNew">New Password:</label>
-                  <input
-                    id="passwordNew"
-                    type="password"
-                    placeholder="Your New Password"
-                  />
-                </>
-              )}
-            </div>
-            <div className={styles.info}>
-              {editMode && (
-                <>
-                  <label htmlFor="passwordNewRetype">
-                    Retype New Password:
-                  </label>
-                  <input
-                    id="passwordNewRetype"
-                    type="password"
-                    placeholder="Retype New Password"
-                  />
-                </>
               )}
             </div>
 

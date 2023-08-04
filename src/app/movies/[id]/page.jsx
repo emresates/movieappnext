@@ -104,6 +104,7 @@ async function MoviePage({ params, searchParams }) {
         overview={movieDetail.overview}
         directorPerson={directorPerson.name}
         castNames={castNames}
+        productID={params.id}
       />
     </>
   );

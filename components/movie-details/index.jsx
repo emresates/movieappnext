@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import StarRatingModal from "../vote-popup";
@@ -10,6 +10,14 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { TbStarsFilled } from "react-icons/tb";
 import { PiStarHalfLight } from "react-icons/pi";
 import CommentsModal from "../commentsModal";
+import { fetchSinglePostData } from "@/services/post.service";
+import { useSession } from "next-auth/react";
+import {
+  fetchCreateComment,
+  fetchDeleteComment,
+  fetchSingleComment,
+} from "@/services/comment.servies";
+import { fetchSingleUserData } from "@/services/user.service";
 
 export default function MovieDetails({
   title,
@@ -25,10 +33,13 @@ export default function MovieDetails({
   overview,
   directorPerson,
   castNames,
+  productID,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const [userID, setUserID] = useState("");
+  const { data, status } = useSession();
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -37,12 +48,51 @@ export default function MovieDetails({
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  useEffect(() => {
+    if (status === "authenticated") {
+      setUserID(data?.user?.id);
+    }
+  }, []);
 
-  const handleAddComment = () => {
+  useEffect(() => {
+    fetchPostData();
+    console.log("use effect worked");
+  }, []);
+
+  const fetchPostData = async () => {
+    const { product } = await fetchSinglePostData(productID);
+
+    if (product?.comments.length > 0) {
+      const comments = await Promise.all(
+        product.comments.map(async (commentID) => {
+          const { comment } = await fetchSingleComment(commentID);
+          const { user } = await fetchSingleUserData(comment?.user);
+          return {
+            text: comment.text,
+            user: user?.username,
+            userId: user._id,
+            commentId: comment._id,
+          };
+        })
+      );
+
+      setComments(comments);
+    }
+  };
+
+  const handleAddComment = async () => {
     if (newComment.trim() !== "") {
-      const newComments = [...comments, newComment];
-      setComments(newComments);
       setNewComment("");
+
+      const data = {
+        text: newComment,
+        productID: productID,
+        user: userID,
+        type: "movie",
+      };
+
+      await fetchCreateComment(data);
+      await fetchPostData();
     }
   };
 
@@ -52,9 +102,9 @@ export default function MovieDetails({
     setComments(editedComments);
   };
 
-  const handleDeleteComment = (index) => {
-    const filteredComments = comments.filter((_, i) => i !== index);
-    setComments(filteredComments);
+  const handleDeleteComment = async (id) => {
+    await fetchDeleteComment(id);
+    await fetchPostData();
   };
   return (
     <>
@@ -158,6 +208,8 @@ export default function MovieDetails({
           handleEditComment={handleEditComment}
           handleDeleteComment={handleDeleteComment}
           handleAddComment={handleAddComment}
+          productID={productID}
+          type="movie"
         />
       </div>
     </>

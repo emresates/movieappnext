@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 
 export async function POST(request) {
   const { name, surname, password, username, email } = await request.json();
+
   const hashedPassword = await bcrypt.hash(password, 8);
   await connectMongoDB();
   const newUser = new User({
@@ -12,21 +13,9 @@ export async function POST(request) {
     email,
     password: hashedPassword,
   });
-  console.log(
-    "name:",
-    name,
-    "surname:",
-    surname,
-    "password:",
-    password,
-    "username:",
-    username,
-    "email:",
-    email
-  );
   try {
     await newUser.save();
-    return NextResponse.json({ message: "User Created" }, { status: 201 });
+    return NextResponse.json({ message: `User Created` }, { status: 201 });
   } catch (error) {
     return new NextResponse(error.message, { status: 500 });
   }
@@ -37,4 +26,3 @@ export async function GET() {
   const users = await User.find();
   return NextResponse.json({ users });
 }
-

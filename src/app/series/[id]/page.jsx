@@ -93,6 +93,7 @@ async function SeriePage({ params, searchParams }) {
         cast={castNames}
         seasons={serieDetail.number_of_seasons}
         episodes={serieDetail.number_of_episodes}
+        productID={params.id}
       />
     </>
   );
