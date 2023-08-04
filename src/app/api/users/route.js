@@ -38,9 +38,3 @@ export async function GET() {
   return NextResponse.json({ users });
 }
 
-export async function DELETE(request) {
-  const id = request.nextUrl.searchParams.get("id");
-  await connectMongoDB();
-  await User.findByIdAndDelete(id);
-  return NextResponse.json({ message: "User Deleted" }, { status: 201 });
-}

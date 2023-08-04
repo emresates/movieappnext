@@ -1,0 +1,51 @@
+.account {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .info {
+    p {
+      border: 1px solid white;
+      padding: 5px;
+      width: 100%;
+      box-shadow: 2px 2px 2px white;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    label {
+      width: 20%;
+    }
+    input {
+      border: 1px solid white;
+      padding: 5px;
+      box-shadow: 2px 2px 2px white;
+      background-color: transparent;
+      color: white;
+      width: 80%;
+
+      &:disabled {
+        background-color: rgb(110, 110, 110);
+        box-shadow: 2px 2px 2px rgb(110, 110, 110);
+        border: 1px solid rgb(110, 110, 110);
+      }
+    }
+  }
+
+  button {
+    float: right;
+    padding: 0.2rem 0.4rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid white;
+    transition: transform 0.1s, background-color 0.3s, color 0.3s;
+    box-shadow: 2px 2px 2px white;
+
+    &:active {
+      transform: translate(2px, 2px);
+    }
+  }
+}

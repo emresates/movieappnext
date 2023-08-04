@@ -2,19 +2,19 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import routes from "@/services/routes.json";
 
 //* Style
 import styles from "./styles.module.scss";
 
 //* Icon
 import { BiSolidMoviePlay } from "react-icons/bi";
+import { signOut, useSession } from "next-auth/react";
 
 function Header() {
   const pathname = usePathname();
-  // console.log(pathname);
+  const { status } = useSession();
+  console.log(pathname);
   // console.log(routes);
-
   const [searchTerm, setSearchTerm] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,11 +43,20 @@ function Header() {
             </p>
           </form>
 
-          {/* <Link href="/movies">Movies</Link>
+          <Link href="/movies">Movies</Link>
           <Link href="/series">Series</Link>
-          <Link href="/">Sign In</Link>
-          <Link href="/">Sing Up</Link> */}
-          {routes.routes.map((route) => {
+          {status === "authenticated" ? (
+            <>
+              <Link href="/dashboard">Dashboard</Link>
+              <button onClick={signOut} style={{ backgroundColor: "white" }}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link href="/login">Login</Link>
+          )}
+
+          {/* {routes.routes.map((route) => {
             const isActive = pathname.startsWith(route.path);
             return (
               <Link
@@ -58,7 +67,7 @@ function Header() {
                 {route.name}
               </Link>
             );
-          })}
+          })} */}
         </nav>
       </div>
     </header>
