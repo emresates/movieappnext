@@ -9,7 +9,6 @@ import {
   getMovieImages,
   getMovieVideos,
 } from "@/services/movie.service";
-import { fetchSinglePostData } from "@/services/post.service";
 
 export async function generateMetadata({ params }) {
   const movieDetail = await getMovie(params.id);
@@ -57,23 +56,18 @@ async function MoviePage({ params, searchParams }) {
   const movieCreditsPromise = getMovieCredits(params.id);
   const movieImagesPromise = getMovieImages(params.id);
   const movieVideoPromise = getMovieVideos(params.id);
-  const movieDetailsFromDB = fetchSinglePostData(params.id);
 
   const [
     { cast: movieCreditsCast },
     { crew: movieCreditsCrew },
     { results: movieVideo },
     { backdrops: movieImages },
-    { product: movieDetailsDB },
   ] = await Promise.all([
     movieCreditsPromise,
     movieCreditsPromise,
     movieVideoPromise,
     movieImagesPromise,
-    movieDetailsFromDB,
   ]);
-
-  console.log(movieDetailsDB);
 
   // console.log(movieDetail);
 
